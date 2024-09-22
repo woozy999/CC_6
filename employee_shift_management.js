@@ -31,3 +31,14 @@ const employees = [
   }
 ];
 
+//task 2
+
+function displayEmployeeShifts(employee) {
+  console.log("Employee Name: " + employee.name);
+  console.log("Assigned Shifts:");
+  employee.shifts.forEach(function(shift) {
+      console.log("Day: " + shift.day + ", Hours: " + shift.hours);
+  });
+}
+
+
