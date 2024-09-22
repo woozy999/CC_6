@@ -34,7 +34,7 @@ const employees = [
 //task 2
 
 function displayEmployeeShifts(employee) {
-  console.log("Employee Name: " + employee.name);
+  console.log("Employe Name: " + employee.name);
   console.log("Assigned Shifts:");
   employee.shifts.forEach(function(shift) {
       console.log("Day: " + shift.day + ", Hours: " + shift.hours);
@@ -58,10 +58,10 @@ function assignShift(employeeName, day, hours) {
     });
 
     if (shiftExists) {
-        console.log("Error: " + employeeName + " already has a shift on " + day + ".");
+        console.log("Errr: " + employeeName + " already has a shift on " + day);
     } else {
         employee.shifts.push({ day: day, hours: hours });
-        console.log("Shift assigned to " + employeeName + " on " + day + ".");
+        console.log("Shift assigned to " + employeeName + " on " + day);
     }
 }
 
@@ -73,7 +73,7 @@ function calculateTotalHours(employeeName) {
   });
 
   if (!employee) {
-      console.log("Employee not found.");
+      console.log("Employee not found");
       return;
   }
 
@@ -83,3 +83,26 @@ function calculateTotalHours(employeeName) {
 
   console.log(employeeName + " has worked a total of " + totalHours + " hours this week.");
 }
+
+//task 5
+
+
+function listAvailableEmployees(day) {
+  console.log("Employees available on " + day + ":");
+  employees.forEach(function(employee) {
+      let isWorking = employee.shifts.some(function(shift) {
+          return shift.day === day;
+      });
+
+      if (!isWorking) {
+          console.log(employee.name);
+      }
+  });
+}
+
+//test functions
+
+displayEmployeeShifts(employees[0]);
+assignShift('Emily', 'Monday', 6);    
+calculateTotalHours('Sara');          
+listAvailableEmployees('Tuesday');    
