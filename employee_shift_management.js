@@ -41,4 +41,26 @@ function displayEmployeeShifts(employee) {
   });
 }
 
+//task 3
 
+function assignShift(employeeName, day, hours) {
+    let employee = employees.find(function(emp) {
+        return emp.name === employeeName;
+    });
+
+    if (!employee) {
+        console.log("Employee not found.");
+        return;
+    }
+
+    let shiftExists = employee.shifts.some(function(shift) {
+        return shift.day === day;
+    });
+
+    if (shiftExists) {
+        console.log("Error: " + employeeName + " already has a shift on " + day + ".");
+    } else {
+        employee.shifts.push({ day: day, hours: hours });
+        console.log("Shift assigned to " + employeeName + " on " + day + ".");
+    }
+}
