@@ -64,3 +64,22 @@ function assignShift(employeeName, day, hours) {
         console.log("Shift assigned to " + employeeName + " on " + day + ".");
     }
 }
+
+//task 4
+
+function calculateTotalHours(employeeName) {
+  let employee = employees.find(function(emp) {
+      return emp.name === employeeName;
+  });
+
+  if (!employee) {
+      console.log("Employee not found.");
+      return;
+  }
+
+  let totalHours = employee.shifts.reduce(function(total, shift) {
+      return total + shift.hours;
+  }, 0);
+
+  console.log(employeeName + " has worked a total of " + totalHours + " hours this week.");
+}
